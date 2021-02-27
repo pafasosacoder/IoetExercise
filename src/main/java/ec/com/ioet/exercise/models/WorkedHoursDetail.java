@@ -65,7 +65,7 @@ public class WorkedHoursDetail {
     }
 
     private int queryDatabase(DayOfWeek dayOfWeek, LocalTime paymentTime) {
-        Optional<AcmePayment> recordPayment = acmeDatabase.entries.stream().filter(item ->
+        Optional<AcmePayment> recordPayment = acmeDatabase.dataList.stream().filter(item ->
                 isDayBetween(dayOfWeek, item) && isTimeBetween(paymentTime, item)
         ).findAny();
         return recordPayment.isPresent() ? recordPayment.get().getPaymentAmount() : 0;

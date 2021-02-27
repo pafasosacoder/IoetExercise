@@ -29,12 +29,12 @@ public class AcmeTest {
     public void shouldValidateInput() throws InvalidUserInputException {
         Employee employee = new Employee("RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00");
         assertEquals("RENE",employee.getEmployeeName());
-        assertEquals(5, employee.getPaymentDetailDtoList().size());
-        assertEquals(DayOfWeek.MONDAY, employee.getPaymentDetailDtoList().get(0).getDay());
-        assertEquals(DayOfWeek.TUESDAY, employee.getPaymentDetailDtoList().get(1).getDay());
-        assertEquals(DayOfWeek.THURSDAY, employee.getPaymentDetailDtoList().get(2).getDay());
-        assertEquals(DayOfWeek.SATURDAY, employee.getPaymentDetailDtoList().get(3).getDay());
-        assertEquals(DayOfWeek.SUNDAY, employee.getPaymentDetailDtoList().get(4).getDay());
+        assertEquals(5, employee.getWorkedHoursDetailsList().size());
+        assertEquals(DayOfWeek.MONDAY, employee.getWorkedHoursDetailsList().get(0).getDay());
+        assertEquals(DayOfWeek.TUESDAY, employee.getWorkedHoursDetailsList().get(1).getDay());
+        assertEquals(DayOfWeek.THURSDAY, employee.getWorkedHoursDetailsList().get(2).getDay());
+        assertEquals(DayOfWeek.SATURDAY, employee.getWorkedHoursDetailsList().get(3).getDay());
+        assertEquals(DayOfWeek.SUNDAY, employee.getWorkedHoursDetailsList().get(4).getDay());
     }
 
     @Test

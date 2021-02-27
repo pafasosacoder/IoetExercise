@@ -10,38 +10,38 @@ import java.util.stream.Collectors;
 public class Employee {
 
     private String employeeName;
-    private List<WorkedHoursDetail> paymentDetailDtoList;
+    private List<WorkedHoursDetail> workedHoursDetailsList;
 
-    public Employee(String employeeName, List<WorkedHoursDetail> paymentDetailDtoList) {
+    public Employee(String employeeName, List<WorkedHoursDetail> workedHoursDetailsList) {
         this.employeeName = employeeName;
-        this.paymentDetailDtoList = paymentDetailDtoList;
+        this.workedHoursDetailsList = workedHoursDetailsList;
     }
 
     public Employee(String rawData) throws InvalidUserInputException  {
         validateUserInput(rawData);
-        String[] userInputArr = getEmployeePaymentData(rawData);
+        String[] userInputArr = getEmployeeData(rawData);
 
         String employeeName = userInputArr[0];
-        String rawPaymentDetails = userInputArr[1];
+        String rawWorkedHoursDetail = userInputArr[1];
 
         if (!(employeeName != null && !employeeName.isBlank() && !employeeName.isEmpty())) {
             throw new InvalidUserInputException(Constants.USER_ERROR,"No employee name found");
         }
-        if (!(rawPaymentDetails != null && !rawPaymentDetails.isEmpty())) {
+        if (!(rawWorkedHoursDetail != null && !rawWorkedHoursDetail.isEmpty())) {
             throw new InvalidUserInputException(Constants.USER_ERROR,"No payment detail found");
         }
 
         this.employeeName = employeeName;
-        String[] arrRawPaymentDetails = rawPaymentDetails.split(Constants.COMMA);
+        String[] arrRawWorkedHours = rawWorkedHoursDetail.split(Constants.COMMA);
 
-        loadPaymentDetails(arrRawPaymentDetails);
+        loadWorkedHoursDetail(arrRawWorkedHours);
 
     }
 
-    private void loadPaymentDetails(String[] arrRawPaymentDetails) throws InvalidUserInputException {
-        this.paymentDetailDtoList = new ArrayList<>();
-        for (String rawPaymentData: arrRawPaymentDetails) {
-            paymentDetailDtoList.add(new WorkedHoursDetail(rawPaymentData));
+    private void loadWorkedHoursDetail(String[] arrRawWorkedHours) throws InvalidUserInputException {
+        this.workedHoursDetailsList = new ArrayList<>();
+        for (String rawWorkedHoursData: arrRawWorkedHours) {
+            workedHoursDetailsList.add(new WorkedHoursDetail(rawWorkedHoursData));
         }
     }
 
@@ -51,7 +51,7 @@ public class Employee {
         }
     }
 
-    private String[] getEmployeePaymentData(String rawData) throws InvalidUserInputException {
+    private String[] getEmployeeData(String rawData) throws InvalidUserInputException {
         String[] userInputArr = rawData.split(Constants.EQUAL);
 
         if (userInputArr.length != 2) {
@@ -65,12 +65,12 @@ public class Employee {
         return employeeName;
     }
 
-    public List<WorkedHoursDetail> getPaymentDetailDtoList() {
-        return paymentDetailDtoList;
+    public List<WorkedHoursDetail> getWorkedHoursDetailsList() {
+        return workedHoursDetailsList;
     }
 
     public int getGrandTotalPayment() {
-        return this.paymentDetailDtoList.stream()
+        return this.workedHoursDetailsList.stream()
                 .collect(Collectors.summingInt(WorkedHoursDetail::getTotalPayment));
     }
 }
