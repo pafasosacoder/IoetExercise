@@ -1,0 +1,17 @@
+.idea/
+.gradle/
+build/
+.directory
+out/
+/bin/
+.settings
+.classpath
+.project
+*.iml
+.env
+/logs
+*.pdf
+
+*.csv
+
+*.jpg
