@@ -19,7 +19,7 @@ Project structure is based on the common easy-understand structure of a Java pro
 The solution receives the user input, then, the algorithm extracts each data and constructs a Master-detail object oriented structure for the employee and
 worked hours detail, then, when the main program request the grand total of worked hours, each worked hours detail can calculate its own payment amount according its conditions, and these information is summarized by a method in the employee class in order to return it to the user thru console output.
 
-Database instances only one time and remains in memory thorough the entire process, reducing memory consumption and improves performance.
+Database instantiates only one time and remains in memory thorough the entire process, reducing memory consumption and improves performance.
 
 
 INSTRUCTIONS
